@@ -1,0 +1,37 @@
+type Query {
+    listMatch : [Match]
+}
+
+type Mutation {
+    ajoutMatch(matchDTORequest : MatchDTORequest) : Match
+    achatTicket(ticketDTORequest : TicketDTORequest) : Ticket
+    modificationTicket(id : ID) : Boolean
+}
+
+input TicketDTORequest{
+    price : Float,
+    matchId : String
+}
+
+input MatchDTORequest{
+    date : String,
+    stadium : String,
+    team1 : String,
+    team2 : String
+}
+type Match {
+    id : ID,
+    reference : String,
+    date : String,
+    stadium : String,
+    team1 : String,
+    team2 : String
+}
+
+type Ticket {
+    id : ID,
+    price : String,
+    state : String,
+    reference : String,
+    match : Match
+}
